@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
+import { Text } from "@chakra-ui/react";
 
 interface Game {
   id: number;
@@ -22,7 +23,7 @@ const GameGrid = ({ searchName }: Props) => {
 
   useEffect(() => {
     apiClient
-      .get<FetchGamesResponse>(`/search?limit=100&client_id=${id}`)
+      .get<FetchGamesResponse>(`/search?client_id=${id}`)
       .then((res) => {
         console.log(res.data.games);
         setGames(res.data.games);
