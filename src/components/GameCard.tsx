@@ -31,23 +31,29 @@ const GameCard = ({ game }: Props) => {
         <HStack justifyContent="space-between">
           <HStack marginY={1} color="gray.500" fontSize="sm">
             <Text>
-              <Icon as={AiFillCalendar} /> {game.year_published}
+              <Icon as={AiFillCalendar} />
+              {game.year_published}
             </Text>
             <Text>
-              <Icon as={HiUserGroup} /> {game.players}
+              <Icon as={HiUserGroup} />
+              {game.players}
             </Text>
             <Text>
-              <Icon as={FaChild} /> {game.min_age}+
+              <Icon as={FaChild} />
+              {game.min_age}+
             </Text>
           </HStack>
           <UserRating score={parseFloat(game.average_user_rating.toFixed(2))} />
         </HStack>
         <HStack marginY={1} color="gray.500" fontSize="sm">
           <Text>
-            <Icon as={GoGear} /> {game.average_strategy_complexity.toFixed(2)}
+            <Icon as={GoGear} />
+            {game.average_strategy_complexity.toFixed(2)}
           </Text>
           <Text>
-            <Icon as={BiTimeFive} /> {game.playtime}
+            <Icon as={BiTimeFive} />
+            {game.playtime}
+            {" min."}
           </Text>
         </HStack>
       </CardBody>
@@ -56,28 +62,3 @@ const GameCard = ({ game }: Props) => {
 };
 
 export default GameCard;
-
-{
-  /* <Grid templateColumns="repeat(4, 1fr)" marginY={1} color="gray.500">
-          <GridItem fontSize="sm">
-            <Icon as={AiFillCalendar} /> {game.year_published}
-          </GridItem>
-          <GridItem fontSize="sm">
-            <Icon as={HiUserGroup} /> {game.players}
-          </GridItem>
-          <GridItem fontSize="sm">
-            <Icon as={FaChild} /> {game.min_age}+
-          </GridItem>
-          <GridItem fontSize="sm" display="flex" justifyContent="flex-end">
-            <UserRating
-              score={parseFloat(game.average_user_rating.toFixed(2))}
-            />
-          </GridItem>
-          <GridItem fontSize="sm">
-            <Icon as={GoGear} /> {game.average_strategy_complexity.toFixed(2)}
-          </GridItem>
-          <GridItem fontSize="sm">
-            <Icon as={BiTimeFive} /> {game.playtime}
-          </GridItem>
-        </Grid> */
-}
