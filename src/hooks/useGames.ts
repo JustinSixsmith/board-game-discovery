@@ -5,9 +5,13 @@ import { CanceledError } from "axios";
 export interface Game {
   id: number;
   name: string;
-  images: {
-    medium: string;
-  };
+  image_url: string;
+  year_published: number;
+  min_age: number;
+  players: number;
+  playtime: number;
+  average_strategy_complexity: number;
+  average_user_rating: number;
 }
 
 interface FetchGamesResponse {
