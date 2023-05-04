@@ -23,8 +23,14 @@ interface Props {
 
 const GameCard = ({ game }: Props) => {
   return (
-    <Card borderRadius={10} overflow="hidden">
-      <Image src={game.images.medium} />
+    <Card>
+      <Image
+        src={game.images.medium}
+        width="100%"
+        height="200px"
+        objectFit="cover"
+        // align image, all width showing, no stretching
+      />
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
         <HStack justifyContent="space-between">
@@ -37,18 +43,18 @@ const GameCard = ({ game }: Props) => {
               <Icon as={HiUserGroup} marginRight="1px" />
               {game.players}
             </Text>
-            <Text>
-              <Icon as={FaChild} marginRight="1px" />
-              {game.min_age}+
-            </Text>
           </HStack>
           <UserRating score={parseFloat(game.average_user_rating.toFixed(2))} />
         </HStack>
-        <HStack marginY={1} color="gray.500" fontSize="sm">
+        <HStack color="gray.500" fontSize="sm">
           <Text>
+            <Icon as={FaChild} marginRight="1px" />
+            {game.min_age}+
+          </Text>
+          {/* <Text>
             <Icon as={GiGears} marginRight="2px" />
             {game.average_strategy_complexity.toFixed(2)}
-          </Text>
+          </Text> */}
           <Text>
             <Icon as={BiTimeFive} margin="2px" />
             {game.playtime}

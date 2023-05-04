@@ -1,16 +1,15 @@
-import React from "react";
 import useMechanics from "../hooks/useMechanics";
 
-const Mechanics = () => {
-  const { mechanics } = useMechanics();
+const MechanicsList = () => {
+  const { data } = useMechanics();
 
   return (
     <ul>
-      {mechanics.map((m) => (
+      {data.map((m) => (
         <li key={m.id}>{m.name}</li>
       ))}
     </ul>
   );
 };
 
-export default Mechanics;
+export default MechanicsList;
