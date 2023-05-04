@@ -13,9 +13,8 @@ import { Game } from "../hooks/useGames";
 import { AiFillCalendar } from "react-icons/ai";
 import { HiUserGroup } from "react-icons/hi";
 import { BiTimeFive } from "react-icons/bi";
-import { GoGear } from "react-icons/go";
+import { GiGears } from "react-icons/gi";
 import { FaChild } from "react-icons/fa";
-import { RiStarSFill } from "react-icons/ri";
 import UserRating from "./UserRating";
 
 interface Props {
@@ -24,22 +23,22 @@ interface Props {
 
 const GameCard = ({ game }: Props) => {
   return (
-    <Card width="250px" borderRadius={10} overflow="hidden">
+    <Card borderRadius={10} overflow="hidden">
       <Image src={game.images.medium} />
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
         <HStack justifyContent="space-between">
           <HStack marginY={1} color="gray.500" fontSize="sm">
             <Text>
-              <Icon as={AiFillCalendar} />
+              <Icon as={AiFillCalendar} marginRight="1px" />
               {game.year_published}
             </Text>
             <Text>
-              <Icon as={HiUserGroup} />
+              <Icon as={HiUserGroup} marginRight="1px" />
               {game.players}
             </Text>
             <Text>
-              <Icon as={FaChild} />
+              <Icon as={FaChild} marginRight="1px" />
               {game.min_age}+
             </Text>
           </HStack>
@@ -47,11 +46,11 @@ const GameCard = ({ game }: Props) => {
         </HStack>
         <HStack marginY={1} color="gray.500" fontSize="sm">
           <Text>
-            <Icon as={GoGear} />
+            <Icon as={GiGears} marginRight="2px" />
             {game.average_strategy_complexity.toFixed(2)}
           </Text>
           <Text>
-            <Icon as={BiTimeFive} />
+            <Icon as={BiTimeFive} margin="2px" />
             {game.playtime}
             {" min."}
           </Text>
