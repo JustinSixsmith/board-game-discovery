@@ -6,9 +6,10 @@ interface FetchResponse<T> {
   count: number;
   games: T[];
   mechanics: T[];
+  categories: T[];
 }
 
-const useMechanics = <T>(endpoint: string) => {
+const useData = <T>(endpoint: string) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const id = "JLBr5npPhV";
@@ -23,8 +24,8 @@ const useMechanics = <T>(endpoint: string) => {
         signal: controller.signal,
       })
       .then((res) => {
-        console.log(res.data.mechanics);
-        setData(res.data.games || res.data.mechanics);
+        console.log(res.data);
+        setData(res.data.games || res.data.mechanics || res.data.categories);
         setLoading(false);
       })
       .catch((err) => {
@@ -39,4 +40,4 @@ const useMechanics = <T>(endpoint: string) => {
   return { data, error, loading };
 };
 
-export default useMechanics;
+export default useData;
