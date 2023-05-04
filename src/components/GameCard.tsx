@@ -13,7 +13,6 @@ import { Game } from "../hooks/useGames";
 import { AiFillCalendar } from "react-icons/ai";
 import { HiUserGroup } from "react-icons/hi";
 import { BiTimeFive } from "react-icons/bi";
-import { GiGears } from "react-icons/gi";
 import { FaChild } from "react-icons/fa";
 import UserRating from "./UserRating";
 
@@ -30,11 +29,11 @@ const GameCard = ({ game }: Props) => {
         <HStack justifyContent="space-between">
           <HStack marginY={1} color="gray.500" fontSize="sm">
             <Text>
-              <Icon as={AiFillCalendar} marginRight="1px" />
+              <Icon as={AiFillCalendar} marginX="2px" />
               {game.year_published}
             </Text>
             <Text>
-              <Icon as={HiUserGroup} marginRight="1px" />
+              <Icon as={HiUserGroup} marginX="2px" />
               {game.players}
             </Text>
           </HStack>
@@ -42,7 +41,7 @@ const GameCard = ({ game }: Props) => {
         </HStack>
         <HStack color="gray.500" fontSize="sm">
           <Text>
-            <Icon as={FaChild} marginRight="1px" />
+            <Icon as={FaChild} marginX="2px" />
             {game.min_age}+
           </Text>
           {/* <Text>
@@ -50,7 +49,7 @@ const GameCard = ({ game }: Props) => {
             {game.average_strategy_complexity.toFixed(2)}
           </Text> */}
           <Text>
-            <Icon as={BiTimeFive} margin="2px" />
+            <Icon as={BiTimeFive} marginX="2px" />
             {game.playtime}
             {" min."}
           </Text>

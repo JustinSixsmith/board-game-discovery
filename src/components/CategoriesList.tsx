@@ -1,8 +1,11 @@
-import { List, ListItem, Text } from "@chakra-ui/react";
+import { List, ListItem, Spinner, Text } from "@chakra-ui/react";
 import useCategories from "../hooks/useCategories";
 
 const CategoriesList = () => {
-  const { data } = useCategories();
+  const { data, loading, error } = useCategories();
+
+  if (error) return null;
+  if (loading) return <Spinner>Loading...</Spinner>;
 
   return (
     <List>
