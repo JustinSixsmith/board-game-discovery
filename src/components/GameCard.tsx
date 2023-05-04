@@ -7,6 +7,7 @@ import {
   Heading,
   Icon,
   Image,
+  Text,
 } from "@chakra-ui/react";
 import { Game } from "../hooks/useGames";
 import { AiFillCalendar } from "react-icons/ai";
@@ -15,6 +16,7 @@ import { BiTimeFive } from "react-icons/bi";
 import { GoGear } from "react-icons/go";
 import { FaChild } from "react-icons/fa";
 import { RiStarSFill } from "react-icons/ri";
+import UserRating from "./UserRating";
 
 interface Props {
   game: Game;
@@ -26,7 +28,37 @@ const GameCard = ({ game }: Props) => {
       <Image src={game.image_url} />
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
-        <Grid templateColumns="repeat(3, 1fr)" marginY={1} color="gray.500">
+        <HStack justifyContent="space-between">
+          <HStack marginY={1} color="gray.500" fontSize="sm">
+            <Text>
+              <Icon as={AiFillCalendar} /> {game.year_published}
+            </Text>
+            <Text>
+              <Icon as={HiUserGroup} /> {game.players}
+            </Text>
+            <Text>
+              <Icon as={FaChild} /> {game.min_age}+
+            </Text>
+          </HStack>
+          <UserRating score={parseFloat(game.average_user_rating.toFixed(2))} />
+        </HStack>
+        <HStack marginY={1} color="gray.500" fontSize="sm">
+          <Text>
+            <Icon as={GoGear} /> {game.average_strategy_complexity.toFixed(2)}
+          </Text>
+          <Text>
+            <Icon as={BiTimeFive} /> {game.playtime}
+          </Text>
+        </HStack>
+      </CardBody>
+    </Card>
+  );
+};
+
+export default GameCard;
+
+{
+  /* <Grid templateColumns="repeat(4, 1fr)" marginY={1} color="gray.500">
           <GridItem fontSize="sm">
             <Icon as={AiFillCalendar} /> {game.year_published}
           </GridItem>
@@ -34,21 +66,18 @@ const GameCard = ({ game }: Props) => {
             <Icon as={HiUserGroup} /> {game.players}
           </GridItem>
           <GridItem fontSize="sm">
-            <Icon as={BiTimeFive} flexWrap="nowrap" /> {game.playtime}
-          </GridItem>
-          <GridItem fontSize="sm">
             <Icon as={FaChild} /> {game.min_age}+
+          </GridItem>
+          <GridItem fontSize="sm" display="flex" justifyContent="flex-end">
+            <UserRating
+              score={parseFloat(game.average_user_rating.toFixed(2))}
+            />
           </GridItem>
           <GridItem fontSize="sm">
             <Icon as={GoGear} /> {game.average_strategy_complexity.toFixed(2)}
           </GridItem>
           <GridItem fontSize="sm">
-            <Icon as={RiStarSFill} /> {game.average_user_rating.toFixed(2)}
+            <Icon as={BiTimeFive} /> {game.playtime}
           </GridItem>
-        </Grid>
-      </CardBody>
-    </Card>
-  );
-};
-
-export default GameCard;
+        </Grid> */
+}
