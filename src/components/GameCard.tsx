@@ -24,13 +24,7 @@ interface Props {
 const GameCard = ({ game }: Props) => {
   return (
     <Card>
-      <Image
-        src={game.images.medium}
-        width="100%"
-        height="200px"
-        objectFit="cover"
-        // align image, all width showing, no stretching
-      />
+      <Image src={game.images.medium} height="200px" objectFit="contain" />
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
         <HStack justifyContent="space-between">

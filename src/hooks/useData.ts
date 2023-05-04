@@ -23,7 +23,7 @@ const useMechanics = <T>(endpoint: string) => {
         signal: controller.signal,
       })
       .then((res) => {
-        console.log(res.data.games || res.data.mechanics);
+        console.log(res.data.mechanics);
         setData(res.data.games || res.data.mechanics);
         setLoading(false);
       })

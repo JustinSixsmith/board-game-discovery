@@ -1,14 +1,17 @@
+import { List, ListItem, Text } from "@chakra-ui/react";
 import useMechanics from "../hooks/useMechanics";
 
 const MechanicsList = () => {
   const { data } = useMechanics();
 
   return (
-    <ul>
+    <List>
       {data.map((m) => (
-        <li key={m.id}>{m.name}</li>
+        <ListItem key={m.id}>
+          <Text fontSize="lg">{m.name}</Text>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 };
 
