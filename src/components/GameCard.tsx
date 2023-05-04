@@ -3,6 +3,7 @@ import {
   CardBody,
   Grid,
   GridItem,
+  HStack,
   Heading,
   Icon,
   Image,
@@ -25,7 +26,7 @@ const GameCard = ({ game }: Props) => {
       <Image src={game.image_url} />
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
-        <Grid templateColumns="repeat(3, 1fr)" paddingTop={2} opacity={0.6}>
+        <Grid templateColumns="repeat(3, 1fr)" marginY={1} color="gray.500">
           <GridItem fontSize="sm">
             <Icon as={AiFillCalendar} /> {game.year_published}
           </GridItem>
