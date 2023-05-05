@@ -4,6 +4,7 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import { Category } from "../hooks/useCategories";
+import { Mechanic } from "../hooks/useMechanics";
 
 interface Props {
   selectedCategory: Category | null;

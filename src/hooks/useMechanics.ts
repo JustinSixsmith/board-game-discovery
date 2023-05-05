@@ -1,10 +1,10 @@
 import useData from "./useData";
 
-export interface Mechanism {
+export interface Mechanic {
   id: string;
   name: string;
 }
 
-const useMechanics = () => useData<Mechanism>("/game/mechanics");
+const useMechanics = () => useData<Mechanic>("/game/mechanics");
 
 export default useMechanics;

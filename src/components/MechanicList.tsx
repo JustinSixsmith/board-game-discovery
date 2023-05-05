@@ -1,11 +1,11 @@
 import { Select, Spinner } from "@chakra-ui/react";
-import useMechanics, { Mechanism } from "../hooks/useMechanics";
+import useMechanics, { Mechanic } from "../hooks/useMechanics";
 
 interface Props {
-  onSelectMechanics: (category: Mechanism) => void;
+  onSelectMechanic: (mechanic: Mechanic) => void;
 }
 
-const MechanicsList = ({ onSelectMechanics }: Props) => {
+const MechanicList = ({ onSelectMechanic }: Props) => {
   const { data, loading, error } = useMechanics();
 
   if (error) return null;
@@ -14,25 +14,27 @@ const MechanicsList = ({ onSelectMechanics }: Props) => {
   return (
     <Select
       onChange={(event: { target: { value: string } }) =>
-        onSelectMechanics(
-          data.find((mechanism) => mechanism.id === event.target.value) || {
+        onSelectMechanic(
+          data.find((mechanic) => mechanic.id === event.target.value) || {
             id: "",
             name: "",
           }
         )
       }
+      variant="filled"
+      placeholder="Mechanic"
+      size="md"
     >
-      <option> - Mechanism - </option>
-      {data.map((mechanism) => (
-        <option key={mechanism.id} value={mechanism.id}>
-          {mechanism.name}
+      {data.map((mechanic) => (
+        <option key={mechanic.id} value={mechanic.id}>
+          {mechanic.name}
         </option>
       ))}
     </Select>
   );
 };
 
-export default MechanicsList;
+export default MechanicList;
 
 // import { List, ListItem, Text } from "@chakra-ui/react";
 // import useMechanics from "../hooks/useMechanics";

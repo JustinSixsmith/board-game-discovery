@@ -21,8 +21,10 @@ const CategoriesList = ({ onSelectCategory }: Props) => {
           }
         )
       }
+      variant="filled"
+      placeholder="Category"
+      size="md"
     >
-      <option> - Category - </option>
       {data.map((category) => (
         <option key={category.id} value={category.id}>
           {category.name}

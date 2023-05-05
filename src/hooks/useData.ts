@@ -16,8 +16,8 @@ const useData = <T>(
 ) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
-  const id = "JLBr5npPhV";
   const [loading, setLoading] = useState(false);
+  const id = "JLBr5npPhV";
 
   useEffect(
     () => {

@@ -1,13 +1,17 @@
-import { Grid, GridItem, Show, VStack } from "@chakra-ui/react";
+import { Grid, GridItem, Show, Stack } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import CategoryList from "./components/CategoryList";
+import MechanicList from "./components/MechanicList";
 import { useState } from "react";
 import { Category } from "./hooks/useCategories";
-import MechanicsList from "./components/MechanicsList";
+import { Mechanic } from "./hooks/useMechanics";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
+    null
+  );
+  const [selectedMechanic, setSelectedMechanic] = useState<Mechanic | null>(
     null
   );
 
@@ -27,12 +31,14 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
-          <VStack>
+          <Stack>
             <CategoryList
               onSelectCategory={(category) => setSelectedCategory(category)}
             />
-            <MechanicsList />
-          </VStack>
+            <MechanicList
+              onSelectMechanic={(mechanic) => setSelectedMechanic(mechanic)}
+            />
+          </Stack>
         </GridItem>
       </Show>
       <GridItem area="main">
