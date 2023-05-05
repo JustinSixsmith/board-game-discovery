@@ -1,10 +1,15 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
-import CategoriesList from "./components/CategoriesList";
-import MechanicsList from "./components/MechanicsList";
+import CategoryList from "./components/CategoryList";
+import { useState } from "react";
+import { Category } from "./hooks/useCategories";
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
+    null
+  );
+
   return (
     <Grid
       templateAreas={{
@@ -21,12 +26,13 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
-          <CategoriesList />
-          <MechanicsList />
+          <CategoryList
+            onSelectCategory={(category) => setSelectedCategory(category)}
+          />
         </GridItem>
       </Show>
       <GridItem area="main">
-        <GameGrid />
+        <GameGrid selectedCategory={selectedCategory} />
       </GridItem>
     </Grid>
   );

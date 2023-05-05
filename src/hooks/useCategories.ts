@@ -1,10 +1,10 @@
 import useData from "./useData";
 
-export interface Categories {
+export interface Category {
   id: number;
   name: string;
 }
 
-const useCategories = () => useData<Categories>("/game/categories");
+const useCategories = () => useData<Category>("/game/categories");
 
 export default useCategories;

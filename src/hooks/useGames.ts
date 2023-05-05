@@ -1,3 +1,4 @@
+import { Category } from "./useCategories";
 import useData from "./useData";
 
 export interface Game {
@@ -15,6 +16,9 @@ export interface Game {
   description: string;
 }
 
-const useGames = () => useData<Game>("/search");
+const useGames = (selectedCategory: Category | null) =>
+  useData<Game>("/search", { params: { categories: selectedCategory?.id } }, [
+    selectedCategory?.id,
+  ]);
 
 export default useGames;
