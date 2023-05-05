@@ -2,7 +2,7 @@ import { Category } from "./useCategories";
 import useData from "./useData";
 
 export interface Game {
-  id: number;
+  id: string;
   name: string;
   images: {
     medium: string;
