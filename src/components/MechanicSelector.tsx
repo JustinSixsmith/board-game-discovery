@@ -21,7 +21,7 @@ const MechanicSelector = ({ onSelectMechanic }: Props) => {
         onSelectMechanic(selectedMechanic || null);
       }}
       variant="filled"
-      placeholder="Mechanic"
+      placeholder="All Mechanics"
       size="md"
       width="inherit"
     >

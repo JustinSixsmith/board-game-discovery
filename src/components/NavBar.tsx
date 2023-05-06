@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <HStack justifyContent="space-between" padding="10px">
       <Image src={icon} boxSize="60px" />
-      <Heading as="h1" fontSize="2xl" fontWeight="bold">
+      <Heading as="h1" fontSize="3xl" fontWeight="bold">
         Board Game Discovery
       </Heading>
       <ColorModeSwitch />
