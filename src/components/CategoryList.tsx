@@ -18,7 +18,7 @@ const CategoriesList = ({ selectedCategory, onSelectCategory }: Props) => {
         <ListItem key={category.id}>
           <Button
             fontWeight={
-              category.id === selectedCategory?.id ? "bold" : "normal"
+              category.id === selectedCategory?.id ? "bolder" : "normal"
             }
             onClick={() => onSelectCategory(category)}
             variant="link"
