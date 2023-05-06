@@ -2,7 +2,7 @@ import { Select } from "@chakra-ui/react";
 import useMechanics, { Mechanic } from "../hooks/useMechanics";
 
 interface Props {
-  onSelectMechanic: (mechanic: Mechanic | undefined) => void;
+  onSelectMechanic: (mechanic: Mechanic | null) => void;
 }
 
 const MechanicSelector = ({ onSelectMechanic }: Props) => {
@@ -15,15 +15,15 @@ const MechanicSelector = ({ onSelectMechanic }: Props) => {
   return (
     <Select
       onChange={(event) => {
-        console.log(event.target.value);
         const selectedMechanic = data.find(
           (mechanic) => mechanic.id === event.target.value
         );
-        onSelectMechanic(selectedMechanic);
+        onSelectMechanic(selectedMechanic || null);
       }}
       variant="filled"
-      placeholder="Category"
+      placeholder="Mechanic"
       size="md"
+      width="inherit"
     >
       {data.map((mechanic) => (
         <option key={mechanic.id} value={mechanic.id}>

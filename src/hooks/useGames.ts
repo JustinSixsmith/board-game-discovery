@@ -1,5 +1,6 @@
 import useData from "./useData";
 import { Category } from "./useCategories";
+import { Mechanic } from "./useMechanics";
 
 export interface Game {
   id: string;
@@ -16,15 +17,19 @@ export interface Game {
   description: string;
 }
 
-const useGames = (selectedCategory?: Category | null) =>
+const useGames = (
+  selectedCategory?: Category | null,
+  selectedMechanic?: Mechanic | null
+) =>
   useData<Game>(
     "/search",
     {
       params: {
         categories: selectedCategory?.id,
+        mechanics: selectedMechanic?.id,
       },
     },
-    [selectedCategory?.id]
+    [selectedCategory?.id, selectedMechanic?.id]
   );
 
 export default useGames;

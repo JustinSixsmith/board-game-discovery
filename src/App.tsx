@@ -11,9 +11,9 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
     null
   );
-  const [selectedMechanic, setSelectedMechanic] = useState<
-    Mechanic | null | undefined
-  >(null);
+  const [selectedMechanic, setSelectedMechanic] = useState<Mechanic | null>(
+    null
+  );
 
   return (
     <Grid
@@ -40,12 +40,15 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <MechanicSelector
-          onSelectMechanic={(selectedMechanic) =>
-            setSelectedMechanic(selectedMechanic)
-          }
+        <HStack paddingX={2}>
+          <MechanicSelector
+            onSelectMechanic={(mechanic) => setSelectedMechanic(mechanic)}
+          />
+        </HStack>
+        <GameGrid
+          selectedMechanic={selectedMechanic}
+          selectedCategory={selectedCategory}
         />
-        <GameGrid selectedCategory={selectedCategory} />
       </GridItem>
     </Grid>
   );
