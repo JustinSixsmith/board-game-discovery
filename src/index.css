@@ -7,9 +7,3 @@ form {
     white-space: nowrap;
   }
 }
-/* 
-@media screen and (max-width: 378px) {
-  .search-input {
-    placeholder: "Search...";
-  }
-} */

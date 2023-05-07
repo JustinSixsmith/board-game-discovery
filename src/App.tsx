@@ -15,6 +15,7 @@ import { Mechanic } from "./hooks/useMechanics";
 import CategoryList from "./components/CategoryList";
 import MechanicSelector from "./components/MechanicSelector";
 import SortSelector from "./components/SortSelector";
+import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
   category: Category | null;
@@ -43,7 +44,7 @@ function App() {
         />
       </GridItem>
       <Show above="lg">
-        <GridItem area="aside" paddingX={1}>
+        <GridItem area="aside">
           <CategoryList
             selectedCategory={gameQuery.category}
             onSelectCategory={(category) =>
@@ -53,21 +54,24 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <Flex paddingLeft={2} marginBottom={5}>
-          <Box marginRight={5}>
-            <MechanicSelector
-              onSelectMechanic={(mechanic) =>
-                setGameQuery({ ...gameQuery, mechanic })
+        <Box paddingLeft={2}>
+          <GameHeading gameQuery={gameQuery} />
+          <Flex marginBottom={5}>
+            <Box marginRight={5}>
+              <MechanicSelector
+                onSelectMechanic={(mechanic) =>
+                  setGameQuery({ ...gameQuery, mechanic })
+                }
+              />
+            </Box>
+            <SortSelector
+              sortOrder={gameQuery.sortOrder}
+              onSelectSortOrder={(sortOrder) =>
+                setGameQuery({ ...gameQuery, sortOrder })
               }
             />
-          </Box>
-          <SortSelector
-            sortOrder={gameQuery.sortOrder}
-            onSelectSortOrder={(sortOrder) =>
-              setGameQuery({ ...gameQuery, sortOrder })
-            }
-          />
-        </Flex>
+          </Flex>
+        </Box>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
