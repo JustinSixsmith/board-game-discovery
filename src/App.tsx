@@ -1,11 +1,12 @@
 import { Grid, GridItem, HStack, Show, Stack } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
-import CategoryList from "./components/CategoryList";
 import { useState } from "react";
 import { Category } from "./hooks/useCategories";
-import MechanicSelector from "./components/MechanicSelector";
 import { Mechanic } from "./hooks/useMechanics";
+import CategoryList from "./components/CategoryList";
+import MechanicSelector from "./components/MechanicSelector";
+import SortSelector from "./components/SortSelector";
 
 export interface GameQuery {
   category: Category | null;
@@ -31,23 +32,22 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={1}>
-          <Stack>
-            <CategoryList
-              selectedCategory={gameQuery.category}
-              onSelectCategory={(category) =>
-                setGameQuery({ ...gameQuery, category })
-              }
-            />
-          </Stack>
+          <CategoryList
+            selectedCategory={gameQuery.category}
+            onSelectCategory={(category) =>
+              setGameQuery({ ...gameQuery, category })
+            }
+          />
         </GridItem>
       </Show>
       <GridItem area="main">
-        <HStack paddingX={2}>
+        <HStack spacing={5} paddingLeft={2} marginBottom={5}>
           <MechanicSelector
             onSelectMechanic={(mechanic) =>
               setGameQuery({ ...gameQuery, mechanic })
             }
           />
+          <SortSelector />
         </HStack>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>

@@ -23,7 +23,8 @@ const MechanicSelector = ({ onSelectMechanic }: Props) => {
       variant="filled"
       placeholder="All Mechanics"
       size="md"
-      width="inherit"
+      width="intrinsic"
+      fontWeight="bold"
     >
       {data.map((mechanic) => (
         <option key={mechanic.id} value={mechanic.id}>
