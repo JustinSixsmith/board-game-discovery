@@ -1,6 +1,4 @@
 import useData from "./useData";
-import { Category } from "./useCategories";
-import { Mechanic } from "./useMechanics";
 import { GameQuery } from "../App";
 
 export interface Game {
@@ -26,6 +24,7 @@ const useGames = (gameQuery: GameQuery) =>
         categories: gameQuery.category?.id,
         mechanics: gameQuery.mechanic?.id,
         order_by: gameQuery.sortOrder,
+        name: gameQuery.searchText,
       },
     },
     [gameQuery]

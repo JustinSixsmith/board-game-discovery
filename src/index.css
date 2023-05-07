@@ -1,0 +1,15 @@
+form {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .switch-text {
+    white-space: nowrap;
+  }
+}
+/* 
+@media screen and (max-width: 378px) {
+  .search-input {
+    placeholder: "Search...";
+  }
+} */
