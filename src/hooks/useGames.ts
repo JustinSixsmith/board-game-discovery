@@ -1,6 +1,7 @@
 import useData from "./useData";
 import { Category } from "./useCategories";
 import { Mechanic } from "./useMechanics";
+import { GameQuery } from "../App";
 
 export interface Game {
   id: string;
@@ -17,19 +18,16 @@ export interface Game {
   description: string;
 }
 
-const useGames = (
-  selectedCategory?: Category | null,
-  selectedMechanic?: Mechanic | null
-) =>
+const useGames = (gameQuery: GameQuery) =>
   useData<Game>(
     "/search",
     {
       params: {
-        categories: selectedCategory?.id,
-        mechanics: selectedMechanic?.id,
+        categories: gameQuery.category?.id,
+        mechanics: gameQuery.mechanic?.id,
       },
     },
-    [selectedCategory?.id, selectedMechanic?.id]
+    [gameQuery]
   );
 
 export default useGames;

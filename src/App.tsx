@@ -7,13 +7,13 @@ import { Category } from "./hooks/useCategories";
 import MechanicSelector from "./components/MechanicSelector";
 import { Mechanic } from "./hooks/useMechanics";
 
+export interface GameQuery {
+  category: Category | null;
+  mechanic: Mechanic | null;
+}
+
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
-    null
-  );
-  const [selectedMechanic, setSelectedMechanic] = useState<Mechanic | null>(
-    null
-  );
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
     <Grid
@@ -33,8 +33,10 @@ function App() {
         <GridItem area="aside" paddingX={1}>
           <Stack>
             <CategoryList
-              selectedCategory={selectedCategory}
-              onSelectCategory={(category) => setSelectedCategory(category)}
+              selectedCategory={gameQuery.category}
+              onSelectCategory={(category) =>
+                setGameQuery({ ...gameQuery, category })
+              }
             />
           </Stack>
         </GridItem>
@@ -42,13 +44,12 @@ function App() {
       <GridItem area="main">
         <HStack paddingX={2}>
           <MechanicSelector
-            onSelectMechanic={(mechanic) => setSelectedMechanic(mechanic)}
+            onSelectMechanic={(mechanic) =>
+              setGameQuery({ ...gameQuery, mechanic })
+            }
           />
         </HStack>
-        <GameGrid
-          selectedMechanic={selectedMechanic}
-          selectedCategory={selectedCategory}
-        />
+        <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
   );
