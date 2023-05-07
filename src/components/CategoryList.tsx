@@ -1,11 +1,4 @@
-import {
-  Button,
-  Heading,
-  List,
-  ListItem,
-  Select,
-  Spinner,
-} from "@chakra-ui/react";
+import { Button, Heading, List, ListItem, Spinner } from "@chakra-ui/react";
 import useCategories, { Category } from "../hooks/useCategories";
 
 interface Props {
@@ -20,35 +13,41 @@ const CategoriesList = ({ selectedCategory, onSelectCategory }: Props) => {
   if (loading) return <Spinner>Loading...</Spinner>;
 
   return (
-    <List>
-      <ListItem>
-        <Button
-          onClick={() => onSelectCategory({ id: "", name: "" })}
-          variant="link"
-          padding="none"
-          size="lg"
-        >
-          <Heading as="h2" fontSize="xl">
-            All Categories
-          </Heading>
-        </Button>
-      </ListItem>
-      {data.map((category) => (
-        <ListItem key={category.id}>
+    <>
+      <Heading fontSize="2xl" marginLeft={6} marginY={3}>
+        Categories
+      </Heading>
+      <List>
+        <ListItem>
           <Button
-            fontWeight={
-              category.id === selectedCategory?.id ? "bolder" : "normal"
-            }
-            onClick={() => onSelectCategory(category)}
+            fontWeight={selectedCategory?.id ? "normal" : "bold"}
+            onClick={() => onSelectCategory({ id: "", name: "" })}
             variant="link"
             padding="none"
             size="lg"
           >
-            {category.name}
+            All Categories
           </Button>
         </ListItem>
-      ))}
-    </List>
+        {data.map((category) => (
+          <ListItem key={category.id}>
+            <Button
+              whiteSpace="normal"
+              textAlign="left"
+              fontWeight={
+                category.id === selectedCategory?.id ? "bold" : "normal"
+              }
+              onClick={() => onSelectCategory(category)}
+              variant="link"
+              padding="none"
+              size="lg"
+            >
+              {category.name}
+            </Button>
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 };
 
