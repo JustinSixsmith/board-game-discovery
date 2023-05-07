@@ -14,6 +14,9 @@ export interface Game {
   average_strategy_complexity: number;
   average_user_rating: number;
   description: string;
+  primary_designer: { name: string };
+  primary_publisher: { name: string };
+  official_url: string;
 }
 
 const useGames = (gameQuery: GameQuery) =>
