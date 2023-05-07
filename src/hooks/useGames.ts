@@ -25,6 +25,7 @@ const useGames = (gameQuery: GameQuery) =>
       params: {
         categories: gameQuery.category?.id,
         mechanics: gameQuery.mechanic?.id,
+        order_by: gameQuery.sortOrder,
       },
     },
     [gameQuery]

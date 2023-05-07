@@ -25,7 +25,7 @@ const useData = <T>(
 
       setLoading(true);
       apiClient
-        .get<FetchResponse<T>>(`${endpoint}?client_id=${id}&limit=75`, {
+        .get<FetchResponse<T>>(`${endpoint}?client_id=${id}&limit=25`, {
           signal: controller.signal,
           ...requestConfig,
         })
