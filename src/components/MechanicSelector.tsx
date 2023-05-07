@@ -23,7 +23,7 @@ const MechanicSelector = ({ onSelectMechanic }: Props) => {
       variant="filled"
       placeholder="All Mechanics"
       size="md"
-      width="intrinsic"
+      width="min-content"
       fontWeight="bold"
     >
       {data.map((mechanic) => (
