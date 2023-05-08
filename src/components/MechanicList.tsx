@@ -24,6 +24,7 @@ const MechanicList = ({ onSelectMechanic }: Props) => {
       variant="filled"
       placeholder="Mechanic"
       size="md"
+      width="100%"
     >
       {data.map((mechanic) => (
         <option key={mechanic.id} value={mechanic.id}>

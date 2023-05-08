@@ -21,9 +21,9 @@ const MechanicSelector = ({ onSelectMechanic }: Props) => {
         onSelectMechanic(selectedMechanic || null);
       }}
       variant="filled"
-      placeholder="All Mechanics"
+      placeholder="Mechanics (All)"
       size="md"
-      width="min-content"
+      width="16"
       fontWeight="bold"
     >
       {data.map((mechanic) => (
