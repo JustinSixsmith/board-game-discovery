@@ -6,10 +6,10 @@ interface Props {
 }
 
 const MechanicList = ({ onSelectMechanic }: Props) => {
-  const { data, loading, error } = useMechanics();
+  const { data, isLoading, error } = useMechanics();
 
   if (error) return null;
-  if (loading) return <Spinner>Loading...</Spinner>;
+  if (isLoading) return <Spinner>Loading...</Spinner>;
 
   return (
     <Select

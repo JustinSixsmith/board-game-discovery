@@ -7,24 +7,25 @@ interface Props {
 }
 
 const CategoriesList = ({ selectedCategory, onSelectCategory }: Props) => {
-  const { data, loading, error } = useCategories();
+  const { data, isLoading, error } = useCategories();
 
   if (error) return null;
-  if (loading) return <Spinner>Loading...</Spinner>;
+  if (isLoading) return <Spinner margin={20}>Loading...</Spinner>;
 
   return (
     <>
       <Heading fontSize="2xl" marginLeft={6} marginY={3}>
         Categories
       </Heading>
-      <List>
+      <List marginX={3}>
         <ListItem>
           <Button
             fontWeight={selectedCategory?.id ? "normal" : "bold"}
             onClick={() => onSelectCategory({ id: "", name: "" })}
             variant="link"
             padding="none"
-            size="lg"
+            marginY={0.5}
+            size="md"
           >
             All Categories
           </Button>
@@ -40,7 +41,8 @@ const CategoriesList = ({ selectedCategory, onSelectCategory }: Props) => {
               onClick={() => onSelectCategory(category)}
               variant="link"
               padding="none"
-              size="lg"
+              marginY={0.5}
+              size="md"
             >
               {category.name}
             </Button>
