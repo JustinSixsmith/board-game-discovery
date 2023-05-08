@@ -50,16 +50,16 @@ function App() {
           <GameHeading gameQuery={gameQuery} />
           <Flex marginBottom={5}>
             <Box marginRight={5}>
-              <MechanicSelector
-                onSelectMechanic={(mechanic) =>
-                  setGameQuery({ ...gameQuery, mechanic })
+              <SortSelector
+                sortOrder={gameQuery.sortOrder}
+                onSelectSortOrder={(sortOrder) =>
+                  setGameQuery({ ...gameQuery, sortOrder })
                 }
               />
             </Box>
-            <SortSelector
-              sortOrder={gameQuery.sortOrder}
-              onSelectSortOrder={(sortOrder) =>
-                setGameQuery({ ...gameQuery, sortOrder })
+            <MechanicSelector
+              onSelectMechanic={(mechanic) =>
+                setGameQuery({ ...gameQuery, mechanic })
               }
             />
           </Flex>

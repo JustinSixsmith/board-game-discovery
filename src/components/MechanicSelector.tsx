@@ -1,5 +1,6 @@
-import { Select } from "@chakra-ui/react";
+import { Icon, Select } from "@chakra-ui/react";
 import useMechanics, { Mechanic } from "../hooks/useMechanics";
+import { GiGears } from "react-icons/gi";
 
 interface Props {
   onSelectMechanic: (mechanic: Mechanic | null) => void;
@@ -21,9 +22,9 @@ const MechanicSelector = ({ onSelectMechanic }: Props) => {
         onSelectMechanic(selectedMechanic || null);
       }}
       variant="filled"
-      placeholder="Mechanics (All)"
+      placeholder="Select a Mechanic"
       size="md"
-      width="16"
+      width="min"
       fontWeight="bold"
     >
       {data.map((mechanic) => (
