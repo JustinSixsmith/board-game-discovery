@@ -14,10 +14,10 @@ const CategoriesList = ({ selectedCategory, onSelectCategory }: Props) => {
 
   return (
     <>
-      <Heading fontSize="2xl" marginLeft={6} marginY={3}>
+      <Heading fontSize="2xl" marginLeft={7} marginY={3}>
         Categories
       </Heading>
-      <List marginX={3}>
+      <List marginLeft={3}>
         <ListItem>
           <Button
             fontWeight={selectedCategory?.id ? "normal" : "bold"}
