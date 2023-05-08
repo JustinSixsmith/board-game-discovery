@@ -1,6 +1,5 @@
-import { Icon, Select } from "@chakra-ui/react";
+import { Select } from "@chakra-ui/react";
 import useMechanics, { Mechanic } from "../hooks/useMechanics";
-import { GiGears } from "react-icons/gi";
 
 interface Props {
   onSelectMechanic: (mechanic: Mechanic | null) => void;
