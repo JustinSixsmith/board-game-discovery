@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import categories from "../data/categories";
 import APIClient from "../services/api-client";
-import { FetchResponse } from "../services/api-client";
 import { CLIENT_ID } from "../services/client-id";
 
 const apiClient = new APIClient<Category>(
