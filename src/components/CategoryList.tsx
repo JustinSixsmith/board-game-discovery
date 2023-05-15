@@ -30,7 +30,7 @@ const CategoriesList = ({ selectedCategory, onSelectCategory }: Props) => {
             All Categories
           </Button>
         </ListItem>
-        {data.map((category) => (
+        {data?.map((category) => (
           <ListItem key={category.id}>
             <Button
               whiteSpace="normal"

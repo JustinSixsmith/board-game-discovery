@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { AxiosRequestConfig, CanceledError } from "axios";
 
-interface FetchResponse<T> {
+export interface FetchResponse<T> {
   count: number;
   games: T[];
-  mechanics: T[];
-  categories: T[];
+  mechanics?: T[];
+  categories?: T[];
 }
 
 const useData = <T>(
@@ -25,12 +25,12 @@ const useData = <T>(
 
       setLoading(true);
       apiClient
-        .get<FetchResponse<T>>(`${endpoint}?client_id=${id}&limit=25`, {
+        .get<FetchResponse<T>>(`${endpoint}?client_id=${id}`, {
           signal: controller.signal,
           ...requestConfig,
         })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setData(res.data.games || res.data.mechanics || res.data.categories);
           setLoading(false);
         })
@@ -49,3 +49,5 @@ const useData = <T>(
 };
 
 export default useData;
+
+// user_id: "gTUbCczk76";

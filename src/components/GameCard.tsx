@@ -79,38 +79,3 @@ const GameCard = ({ game }: Props) => {
 };
 
 export default GameCard;
-
-// {/* <Card>
-//       <Image src={game.images.medium} height="200px" objectFit="contain" />
-//       <CardBody>
-//         <Heading fontSize="2xl">{game.name}</Heading>
-//         <HStack justifyContent="space-between">
-//           <HStack marginY={1} color="gray.500" fontSize="sm">
-//             <Text>
-//               <Icon as={AiFillCalendar} marginX="2px" />
-//               {game.year_published}
-//             </Text>
-//             <Text>
-//               <Icon as={HiUserGroup} marginX="2px" />
-//               {game.players}
-//             </Text>
-//           </HStack>
-//           <UserRating score={parseFloat(game.average_user_rating.toFixed(2))} />
-//         </HStack>
-//         <HStack color="gray.500" fontSize="sm">
-//           <Text>
-//             <Icon as={FaChild} marginX="2px" />
-//             {game.min_age}+
-//           </Text>
-//           {/* <Text>
-//             <Icon as={GiGears} marginRight="2px" />
-//             {game.average_strategy_complexity.toFixed(2)}
-//           </Text> */}
-//           <Text>
-//             <Icon as={BiTimeFive} marginX="2px" />
-//             {game.playtime}
-//             {" min."}
-//           </Text>
-//         </HStack>
-//       </CardBody>
-//     </Card> */}
