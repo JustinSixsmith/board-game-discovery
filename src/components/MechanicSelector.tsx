@@ -15,7 +15,7 @@ const MechanicSelector = ({ onSelectMechanic }: Props) => {
   return (
     <Select
       onChange={(event) => {
-        const selectedMechanic = data.find(
+        const selectedMechanic = data?.find(
           (mechanic) => mechanic.id === event.target.value
         );
         onSelectMechanic(selectedMechanic || null);
@@ -26,7 +26,7 @@ const MechanicSelector = ({ onSelectMechanic }: Props) => {
       width="inherit"
       fontWeight="bold"
     >
-      {data.map((mechanic) => (
+      {data?.map((mechanic) => (
         <option key={mechanic.id} value={mechanic.id}>
           {mechanic.name}
         </option>
