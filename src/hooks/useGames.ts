@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { GameQuery } from "../App";
-import apiClient, { FetchResponse } from "../services/api-client";
+import APIClient, { FetchResponse } from "../services/api-client";
 import { CLIENT_ID } from "../services/client-id";
+
+const apiClient = new APIClient<Game>(`/search?client_id=${CLIENT_ID}`);
 
 export interface Game {
   id: string;
@@ -21,24 +23,25 @@ export interface Game {
   official_url: string;
 }
 
-const useGames = (gameQuery: GameQuery) => {
-  return useQuery<FetchResponse<Game>, Error>(["games", gameQuery], () =>
-    apiClient
-      .get<FetchResponse<Game>>(`/search?client_id=${CLIENT_ID}`, {
-        params: {
-          categories: gameQuery.category?.id,
-          mechanics: gameQuery.mechanic?.id,
-          order_by: gameQuery.sortOrder,
-          name: gameQuery.searchText,
-        },
-      })
-      .then((res) => res.data)
-  );
-};
+const useGames = (gameQuery: GameQuery) =>
+  useQuery<FetchResponse<Game>, Error>({
+    queryKey: ["games", gameQuery],
+    queryFn: () =>
+      apiClient
+        .getAll({
+          params: {
+            id: gameQuery.id,
+            categories: gameQuery.category?.id,
+            mechanics: gameQuery.mechanic?.id,
+            order_by: gameQuery.sortOrder,
+            name: gameQuery.searchText,
+          },
+        })
+        .then((data) => ({ count: data.length, games: data })), // wrap the games array to match FetchResponse<Game>
+  });
 
 export default useGames;
 
-// useData<Game>(
 //   "/search",
 //   {
 //     params: {

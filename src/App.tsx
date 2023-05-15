@@ -10,6 +10,7 @@ import { Category } from "./hooks/useCategories";
 import { Mechanic } from "./hooks/useMechanics";
 
 export interface GameQuery {
+  id: string;
   category: Category | null;
   mechanic: Mechanic | null;
   sortOrder: string;
