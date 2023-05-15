@@ -1,13 +1,13 @@
 import { Box, Flex, Grid, GridItem, Show } from "@chakra-ui/react";
-import NavBar from "./components/NavBar";
-import GameGrid from "./components/GameGrid";
 import { useState } from "react";
+import CategoryList from "./components/CategoryList";
+import GameGrid from "./components/GameGrid";
+import GameHeading from "./components/GameHeading";
+import MechanicSelector from "./components/MechanicSelector";
+import NavBar from "./components/NavBar";
+import SortSelector from "./components/SortSelector";
 import { Category } from "./hooks/useCategories";
 import { Mechanic } from "./hooks/useMechanics";
-import CategoryList from "./components/CategoryList";
-import MechanicSelector from "./components/MechanicSelector";
-import SortSelector from "./components/SortSelector";
-import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
   category: Category | null;
