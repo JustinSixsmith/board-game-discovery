@@ -11,7 +11,7 @@ import { Mechanic } from "./hooks/useMechanics";
 
 export interface GameQuery {
   id: string;
-  category: Category | null;
+  categoryId?: string;
   mechanic: Mechanic | null;
   sortOrder: string;
   searchText: string;
@@ -39,9 +39,9 @@ function App() {
       <Show above="lg">
         <GridItem area="aside">
           <CategoryList
-            selectedCategory={gameQuery.category}
+            selectedCategoryId={gameQuery.categoryId}
             onSelectCategory={(category) =>
-              setGameQuery({ ...gameQuery, category })
+              setGameQuery({ ...gameQuery, categoryId: category.id })
             }
           />
         </GridItem>

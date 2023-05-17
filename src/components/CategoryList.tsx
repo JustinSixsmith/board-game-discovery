@@ -10,10 +10,10 @@ import useCategories, { Category } from "../hooks/useCategories";
 
 interface Props {
   onSelectCategory: (category: Category) => void;
-  selectedCategory: Category | null;
+  selectedCategoryId?: string;
 }
 
-const CategoriesList = ({ selectedCategory, onSelectCategory }: Props) => {
+const CategoriesList = ({ selectedCategoryId, onSelectCategory }: Props) => {
   const { data, isLoading, error } = useCategories();
 
   if (error) return <Text>Error: {error.message}</Text>;
@@ -27,7 +27,7 @@ const CategoriesList = ({ selectedCategory, onSelectCategory }: Props) => {
       <List marginLeft={3}>
         <ListItem>
           <Button
-            fontWeight={selectedCategory?.id ? "normal" : "bold"}
+            fontWeight={selectedCategoryId ? "normal" : "bold"}
             onClick={() => onSelectCategory({ id: "", name: "" })}
             variant="link"
             padding="none"
@@ -43,7 +43,7 @@ const CategoriesList = ({ selectedCategory, onSelectCategory }: Props) => {
               whiteSpace="normal"
               textAlign="left"
               fontWeight={
-                category.id === selectedCategory?.id ? "bold" : "normal"
+                category.id === selectedCategoryId ? "bold" : "normal"
               }
               onClick={() => onSelectCategory(category)}
               variant="link"

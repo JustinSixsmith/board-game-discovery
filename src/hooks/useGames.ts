@@ -31,7 +31,7 @@ const useGames = (gameQuery: GameQuery) =>
       const games = await apiClient.getAll({
         params: {
           id: gameQuery.id,
-          categories: gameQuery.category?.id,
+          categories: gameQuery.categoryId,
           mechanics: gameQuery.mechanic?.id,
           order_by: gameQuery.sortOrder,
           name: gameQuery.searchText,
