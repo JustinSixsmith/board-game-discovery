@@ -1,6 +1,6 @@
 // useGames.ts
 import { useInfiniteQuery } from "@tanstack/react-query";
-import APIClient from "../services/api-client";
+import APIClient, { FetchResponse } from "../services/api-client";
 import { CLIENT_ID } from "../services/client-id";
 import { GameQuery } from "../App";
 
@@ -20,13 +20,6 @@ export interface Game {
   average_strategy_complexity: number;
   playtime: number;
   official_url: string;
-}
-
-interface FetchResponse<T> {
-  count: number;
-  games: T[];
-  mechanics?: T[];
-  categories?: T[];
 }
 
 const apiClient = new APIClient<Game>(`/search?client_id=${CLIENT_ID}`);
@@ -51,6 +44,7 @@ const useGames = (gameQuery: GameQuery) =>
       const { games } = lastPage;
       return games.length > 0 ? games.length : undefined;
     },
+    staleTime: 24 * 60 * 60 * 1000, // 24 hours
   });
 
 export default useGames;

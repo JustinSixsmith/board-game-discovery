@@ -5,6 +5,13 @@ const axiosInstance = axios.create({
   params: {},
 });
 
+export interface FetchResponse<T> {
+  count: number;
+  games: T[];
+  mechanics?: T[];
+  categories?: T[];
+}
+
 class APIClient<T> {
   endpoint: string;
 
