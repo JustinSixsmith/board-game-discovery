@@ -6,7 +6,6 @@ import GameHeading from "./components/GameHeading";
 import MechanicSelector from "./components/MechanicSelector";
 import NavBar from "./components/NavBar";
 import SortSelector from "./components/SortSelector";
-import { Category } from "./hooks/useCategories";
 import { Mechanic } from "./hooks/useMechanics";
 
 export interface GameQuery {
