@@ -32,7 +32,7 @@ const useGames = (gameQuery: GameQuery) =>
         params: {
           id: gameQuery.id,
           categories: gameQuery.categoryId,
-          mechanics: gameQuery.mechanic?.id,
+          mechanics: gameQuery.mechanicId,
           order_by: gameQuery.sortOrder,
           name: gameQuery.searchText,
           skip: pageParam,
