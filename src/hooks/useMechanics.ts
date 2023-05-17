@@ -1,5 +1,6 @@
 // useMechanics.ts
 import { useQuery } from "@tanstack/react-query";
+import ms from "ms";
 import mechanics from "../data/mechanics";
 import APIClient from "../services/api-client";
 import { CLIENT_ID } from "../services/client-id";
@@ -17,7 +18,7 @@ const useMechanics = () =>
   useQuery<Mechanic[], Error>({
     queryKey: ["mechanics"],
     queryFn: () => apiClient.getAll({}),
-    staleTime: 24 * 60 * 60 * 1000, // 24 hours
+    staleTime: ms("24h"),
     initialData: mechanics,
   });
 
