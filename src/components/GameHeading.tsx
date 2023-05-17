@@ -1,18 +1,15 @@
 import { Heading } from "@chakra-ui/react";
 import { GameQuery } from "../App";
-import useCategories from "../hooks/useCategories";
-import useMechanics from "../hooks/useMechanics";
+import useCategory from "../hooks/useCategory";
+import useMechanic from "../hooks/useMechanic";
 
 interface Props {
   gameQuery: GameQuery;
 }
 
 const GameHeading = ({ gameQuery }: Props) => {
-  const { data: categories } = useCategories();
-  const category = categories?.find((c) => c.id === gameQuery.categoryId);
-
-  const { data: mechanics } = useMechanics();
-  const mechanic = mechanics?.find((m) => m.id === gameQuery.mechanicId);
+  const category = useCategory(gameQuery.categoryId);
+  const mechanic = useMechanic(gameQuery.mechanicId);
 
   const heading = `${category?.name || ""} Board Games ${
     gameQuery.mechanicId ? `w/${mechanic?.name} Mechanics` : ""

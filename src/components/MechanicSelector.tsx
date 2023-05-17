@@ -12,14 +12,17 @@ const MechanicSelector = ({ onSelectMechanic }: Props) => {
     return null;
   }
 
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const mechanicId = event.target.value;
+    const selectedMechanic = data?.find(
+      (mechanic) => mechanic.id === mechanicId
+    );
+    onSelectMechanic(selectedMechanic || null);
+  };
+
   return (
     <Select
-      onChange={(event) => {
-        const selectedMechanic = data?.find(
-          (mechanic: { id: string }) => mechanic.id === event.target.value
-        );
-        onSelectMechanic(selectedMechanic || null);
-      }}
+      onChange={handleSelectChange}
       variant="filled"
       placeholder="Select a Mechanic"
       size="md"
