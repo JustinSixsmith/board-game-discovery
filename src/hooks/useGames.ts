@@ -1,9 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import { GameQuery } from "../App";
-import APIClient, { FetchResponse } from "../services/api-client";
+// useGames.ts
+import { useInfiniteQuery } from "@tanstack/react-query";
+import APIClient from "../services/api-client";
 import { CLIENT_ID } from "../services/client-id";
-
-const apiClient = new APIClient<Game>(`/search?client_id=${CLIENT_ID}`);
+import { GameQuery } from "../App";
 
 export interface Game {
   id: string;
@@ -11,45 +10,47 @@ export interface Game {
   images: {
     medium: string;
   };
-  year_published: number;
-  min_age: number;
-  players: number;
-  playtime: number;
-  average_strategy_complexity: number;
+  primary_designer: {
+    name: string;
+  };
   average_user_rating: number;
-  description: string;
-  primary_designer: { name: string };
-  primary_publisher: { name: string };
+  year_published: number;
+  players: string;
+  min_age: number;
+  average_strategy_complexity: number;
+  playtime: number;
   official_url: string;
 }
 
+interface FetchResponse<T> {
+  count: number;
+  games: T[];
+  mechanics?: T[];
+  categories?: T[];
+}
+
+const apiClient = new APIClient<Game>(`/search?client_id=${CLIENT_ID}`);
+
 const useGames = (gameQuery: GameQuery) =>
-  useQuery<FetchResponse<Game>, Error>({
+  useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
-    queryFn: () =>
-      apiClient
-        .getAll({
-          params: {
-            id: gameQuery.id,
-            categories: gameQuery.category?.id,
-            mechanics: gameQuery.mechanic?.id,
-            order_by: gameQuery.sortOrder,
-            name: gameQuery.searchText,
-          },
-        })
-        .then((data) => ({ count: data.length, games: data })), // wrap the games array to match FetchResponse<Game>
+    queryFn: async ({ pageParam = 0 }) => {
+      const games = await apiClient.getAll({
+        params: {
+          id: gameQuery.id,
+          categories: gameQuery.category?.id,
+          mechanics: gameQuery.mechanic?.id,
+          order_by: gameQuery.sortOrder,
+          name: gameQuery.searchText,
+          skip: pageParam,
+        },
+      });
+      return { count: games.length, games };
+    },
+    getNextPageParam: (lastPage) => {
+      const { games } = lastPage;
+      return games.length > 0 ? games.length : undefined;
+    },
   });
 
 export default useGames;
-
-//   "/search",
-//   {
-//     params: {
-//       categories: gameQuery.category?.id,
-//       mechanics: gameQuery.mechanic?.id,
-//       order_by: gameQuery.sortOrder,
-//       name: gameQuery.searchText,
-//     },
-//   },
-//   [gameQuery]
-// );

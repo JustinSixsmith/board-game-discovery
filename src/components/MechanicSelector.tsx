@@ -16,7 +16,7 @@ const MechanicSelector = ({ onSelectMechanic }: Props) => {
     <Select
       onChange={(event) => {
         const selectedMechanic = data?.find(
-          (mechanic) => mechanic.id === event.target.value
+          (mechanic: { id: string }) => mechanic.id === event.target.value
         );
         onSelectMechanic(selectedMechanic || null);
       }}

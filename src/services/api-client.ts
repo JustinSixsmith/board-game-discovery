@@ -1,12 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-export interface FetchResponse<T> {
-  count: number;
-  games: T[];
-  mechanics?: T[];
-  categories?: T[];
-}
-
 const axiosInstance = axios.create({
   baseURL: `https://api.boardgameatlas.com/api`,
   params: {},
@@ -21,10 +14,8 @@ class APIClient<T> {
 
   getAll = (config: AxiosRequestConfig) => {
     return axiosInstance
-      .get<FetchResponse<T>>(this.endpoint, config)
-      .then(
-        (res) => res.data?.categories || res.data?.mechanics || res.data?.games
-      );
+      .get<{ games: T[] }>(this.endpoint, config)
+      .then((res) => res.data.games);
   };
 }
 

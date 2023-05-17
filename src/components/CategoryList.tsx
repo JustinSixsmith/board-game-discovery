@@ -1,4 +1,11 @@
-import { Button, Heading, List, ListItem, Spinner } from "@chakra-ui/react";
+import {
+  Button,
+  Heading,
+  List,
+  ListItem,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import useCategories, { Category } from "../hooks/useCategories";
 
 interface Props {
@@ -9,8 +16,8 @@ interface Props {
 const CategoriesList = ({ selectedCategory, onSelectCategory }: Props) => {
   const { data, isLoading, error } = useCategories();
 
-  if (error) return null;
-  if (isLoading) return <Spinner margin={20}>Loading...</Spinner>;
+  if (error) return <Text>Error: {error.message}</Text>;
+  if (isLoading) return <Spinner margin={20} />;
 
   return (
     <>
@@ -30,7 +37,7 @@ const CategoriesList = ({ selectedCategory, onSelectCategory }: Props) => {
             All Categories
           </Button>
         </ListItem>
-        {data?.map((category) => (
+        {data?.map((category: Category) => (
           <ListItem key={category.id}>
             <Button
               whiteSpace="normal"
@@ -54,25 +61,3 @@ const CategoriesList = ({ selectedCategory, onSelectCategory }: Props) => {
 };
 
 export default CategoriesList;
-
-{
-  /* <Select
-      onChange={(event: { target: { value: string } }) =>
-        onSelectCategory(
-          data.find((category) => category.id === event.target.value) || {
-            id: "",
-            name: "",
-          }
-        )
-      }
-      variant="filled"
-      placeholder="Category"
-      size="md"
-    >
-      {data.map((category) => (
-        <option key={category.id} value={category.id}>
-          {category.name}
-        </option>
-      ))}
-    </Select> */
-}
