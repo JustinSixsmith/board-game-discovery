@@ -1,22 +1,14 @@
-import {
-  Button,
-  Heading,
-  List,
-  ListItem,
-  Spinner,
-  Text,
-} from "@chakra-ui/react";
+import { Button, Heading, List, ListItem, Spinner } from "@chakra-ui/react";
 import useCategories, { Category } from "../hooks/useCategories";
+import useGameQueryStore from "../store";
 
-interface Props {
-  onSelectCategory: (category: Category) => void;
-  selectedCategoryId?: string;
-}
-
-const CategoriesList = ({ selectedCategoryId, onSelectCategory }: Props) => {
+const CategoriesList = () => {
   const { data, isLoading, error } = useCategories();
+  const selectedCategoryId = useGameQueryStore((s) => s.gameQuery.categoryId);
+  const setSelectedCategoryId = useGameQueryStore((s) => s.setCategoryId);
 
-  if (error) return <Text>Error: {error.message}</Text>;
+  if (error) return null;
+
   if (isLoading) return <Spinner margin={20} />;
 
   return (
@@ -28,7 +20,7 @@ const CategoriesList = ({ selectedCategoryId, onSelectCategory }: Props) => {
         <ListItem>
           <Button
             fontWeight={selectedCategoryId ? "normal" : "bold"}
-            onClick={() => onSelectCategory({ id: "", name: "" })}
+            onClick={() => setSelectedCategoryId("")}
             variant="link"
             padding="none"
             marginY={0.5}
@@ -45,7 +37,7 @@ const CategoriesList = ({ selectedCategoryId, onSelectCategory }: Props) => {
               fontWeight={
                 category.id === selectedCategoryId ? "bold" : "normal"
               }
-              onClick={() => onSelectCategory(category)}
+              onClick={() => setSelectedCategoryId(category.id)}
               variant="link"
               padding="none"
               marginY={0.5}

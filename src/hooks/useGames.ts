@@ -1,9 +1,9 @@
 // useGames.ts
 import { useInfiniteQuery } from "@tanstack/react-query";
 import ms from "ms";
-import { GameQuery } from "../App";
 import APIClient, { FetchResponse } from "../services/api-client";
 import { CLIENT_ID } from "../services/client-id";
+import useGameQueryStore from "../store";
 
 export interface Game {
   id: string;
@@ -25,13 +25,15 @@ export interface Game {
 
 const apiClient = new APIClient<Game>(`/search?client_id=${CLIENT_ID}`);
 
-const useGames = (gameQuery: GameQuery) =>
-  useInfiniteQuery<FetchResponse<Game>, Error>({
+const useGames = () => {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
+
+  return useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: async ({ pageParam = 0 }) => {
       const games = await apiClient.getAll({
         params: {
-          id: gameQuery.id,
+          // id: gameQuery.id,
           categories: gameQuery.categoryId,
           mechanics: gameQuery.mechanicId,
           order_by: gameQuery.sortOrder,
@@ -47,5 +49,6 @@ const useGames = (gameQuery: GameQuery) =>
     },
     staleTime: ms("24h"),
   });
+};
 
 export default useGames;

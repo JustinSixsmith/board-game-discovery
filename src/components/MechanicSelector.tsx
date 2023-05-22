@@ -1,23 +1,18 @@
 import { Select } from "@chakra-ui/react";
-import useMechanics, { Mechanic } from "../hooks/useMechanics";
+import useMechanics from "../hooks/useMechanics";
+import useGameQueryStore from "../store";
 
-interface Props {
-  onSelectMechanic: (mechanic: Mechanic | null) => void;
-}
-
-const MechanicSelector = ({ onSelectMechanic }: Props) => {
+const MechanicSelector = () => {
   const { data, error } = useMechanics();
+  const setSelectedMechanicId = useGameQueryStore((s) => s.setMechanicId);
+  const selectedMechanicId = useGameQueryStore((s) => s.gameQuery.mechanicId);
 
   if (error) {
     return null;
   }
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const mechanicId = event.target.value;
-    const selectedMechanic = data?.find(
-      (mechanic) => mechanic.id === mechanicId
-    );
-    onSelectMechanic(selectedMechanic || null);
+    setSelectedMechanicId(selectedMechanicId || event.target.value);
   };
 
   return (
