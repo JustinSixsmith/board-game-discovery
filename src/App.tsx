@@ -31,9 +31,9 @@ function App() {
           <GameHeading />
           <Flex marginBottom={5}>
             <Box marginRight={5}>
-              <SortSelector />
+              <MechanicSelector />
             </Box>
-            <MechanicSelector />
+            <SortSelector />
           </Flex>
         </Box>
         <GameGrid />
