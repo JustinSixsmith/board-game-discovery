@@ -13,7 +13,7 @@ import { FaChild } from "react-icons/fa";
 import { GiGears } from "react-icons/gi";
 import { HiUserGroup } from "react-icons/hi";
 import { Link } from "react-router-dom";
-import { Game } from "../hooks/useGames";
+import { Game } from "../entities/Game";
 import UserRating from "./UserRating";
 
 interface Props {

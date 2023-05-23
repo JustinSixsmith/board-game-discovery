@@ -2,13 +2,9 @@
 import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
 import mechanics from "../data/mechanics";
+import { Mechanic } from "../entities/Mechanic";
 import APIClient from "../services/api-client";
 import { CLIENT_ID } from "../services/client-id";
-
-export interface Mechanic {
-  id: string;
-  name: string;
-}
 
 const apiClient = new APIClient<Mechanic>(
   `/game/mechanics?client_id=${CLIENT_ID}`

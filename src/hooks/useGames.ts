@@ -1,27 +1,9 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import ms from "ms";
+import { Game } from "../entities/Game";
 import APIClient, { FetchResponse } from "../services/api-client";
 import { CLIENT_ID } from "../services/client-id";
 import useGameQueryStore from "../store";
-
-export interface Game {
-  id: string;
-  name: string;
-  description: string;
-  images: {
-    medium: string;
-  };
-  primary_designer: {
-    name: string;
-  };
-  average_user_rating: number;
-  year_published: number;
-  players: string;
-  min_age: number;
-  average_strategy_complexity: number;
-  playtime: number;
-  official_url: string;
-}
 
 const apiClient = new APIClient<Game>(`/search?client_id=${CLIENT_ID}`);
 
