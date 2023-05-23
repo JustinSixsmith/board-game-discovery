@@ -7,12 +7,13 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import { Game } from "../hooks/useGames";
 import { AiFillCalendar, AiOutlineGlobal } from "react-icons/ai";
-import { HiUserGroup } from "react-icons/hi";
 import { BiTimeFive } from "react-icons/bi";
 import { FaChild } from "react-icons/fa";
 import { GiGears } from "react-icons/gi";
+import { HiUserGroup } from "react-icons/hi";
+import { Link } from "react-router-dom";
+import { Game } from "../hooks/useGames";
 import UserRating from "./UserRating";
 
 interface Props {
@@ -30,7 +31,9 @@ const GameCard = ({ game }: Props) => {
           </Text>
           <UserRating score={parseFloat(game.average_user_rating.toFixed(2))} />
         </HStack>
-        <Heading fontSize="2xl">{game.name}</Heading>
+        <Heading fontSize="2xl">
+          <Link to={"/games/" + game.id}>{game.name}</Link>
+        </Heading>
         <HStack
           marginY={2}
           color="gray.500"

@@ -1,4 +1,3 @@
-// useGames.ts
 import { useInfiniteQuery } from "@tanstack/react-query";
 import ms from "ms";
 import APIClient, { FetchResponse } from "../services/api-client";
@@ -8,6 +7,7 @@ import useGameQueryStore from "../store";
 export interface Game {
   id: string;
   name: string;
+  description: string;
   images: {
     medium: string;
   };
@@ -33,7 +33,6 @@ const useGames = () => {
     queryFn: async ({ pageParam = 0 }) => {
       const games = await apiClient.getAll({
         params: {
-          // id: gameQuery.id,
           categories: gameQuery.categoryId,
           mechanics: gameQuery.mechanicId,
           order_by: gameQuery.sortOrder,
