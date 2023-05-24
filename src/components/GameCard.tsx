@@ -6,6 +6,7 @@ import {
   Icon,
   Image,
   Text,
+  Link as WebLink,
 } from "@chakra-ui/react";
 import { AiFillCalendar, AiOutlineGlobal } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
@@ -71,9 +72,9 @@ const GameCard = ({ game }: Props) => {
           </Text>
           <Text>
             <Icon as={AiOutlineGlobal} marginX={1} />
-            <a href={game.official_url} target="_blank">
+            <WebLink href={game.official_url} target="_blank">
               <u>Official URL</u>
-            </a>
+            </WebLink>
           </Text>
         </HStack>
       </CardBody>

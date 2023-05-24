@@ -1,21 +1,23 @@
 import { Category } from "./Category";
+import { Designer } from "./Designer";
+import { Image } from "./Image";
+import { Mechanic } from "./Mechanic";
+import { Publisher } from "./Publisher";
 
 export interface Game {
-  id: string;
-  name: string;
-  description: string;
-  categories: Category[];
-  images: {
-    medium: string;
-  };
-  primary_designer: {
-    name: string;
-  };
-  average_user_rating: number;
-  year_published: number;
-  players: string;
-  min_age: number;
   average_strategy_complexity: number;
-  playtime: number;
+  average_user_rating: number;
+  categories: Category[];
+  description: string;
+  id: string;
+  images: Image;
+  mechanics: Mechanic[];
+  min_age: number;
+  name: string;
   official_url: string;
+  players: string;
+  playtime: number;
+  primary_designer: Designer;
+  primary_publisher: Publisher;
+  year_published: number;
 }

@@ -1,4 +1,3 @@
-// useCategories.ts
 import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
 import categories from "../data/categories";
