@@ -1,7 +1,10 @@
+import { Category } from "./Category";
+
 export interface Game {
   id: string;
   name: string;
   description: string;
+  categories: Category[];
   images: {
     medium: string;
   };
