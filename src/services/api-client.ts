@@ -22,7 +22,7 @@ class APIClient<T> {
   getAll = (config: AxiosRequestConfig) => {
     return axiosInstance
       .get<{ games: T[] }>(this.endpoint, config)
-      .then((res) => res.data.games);
+      .then((res) => res.data.games || res.data);
   };
 
   get = (config?: AxiosRequestConfig) => {

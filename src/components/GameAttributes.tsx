@@ -27,31 +27,39 @@ const GameAttributes = ({ game }: Props) => {
 
   return (
     <SimpleGrid columns={2} as="dl">
+      <DefinitionItem term="Publisher">
+        <Text key={game.primary_publisher.id}>
+          {game.primary_publisher.name}
+        </Text>
+      </DefinitionItem>
+      <DefinitionItem term="Rating">
+        <UserRating score={parseFloat(game.average_user_rating.toFixed(2))} />
+      </DefinitionItem>
+      <DefinitionItem term="Designer">
+        <Text key={game.primary_designer.id}>{game.primary_designer.name}</Text>
+      </DefinitionItem>
+      <DefinitionItem term="Artist(s)">
+        {game.artists.map((artist) => (
+          <Text key={artist}>{artist}</Text>
+        ))}
+      </DefinitionItem>
       <DefinitionItem term="Categories">
         {gameCategories.map((category) => (
           <Text key={category?.id}>{category?.name}</Text>
         ))}
-      </DefinitionItem>
-      <DefinitionItem term="Rating">
-        <UserRating score={parseFloat(game.average_user_rating.toFixed(2))} />
       </DefinitionItem>
       <DefinitionItem term="Mechanics">
         {gameMechanics.map((mechanic) => (
           <Text key={mechanic?.id}>{mechanic?.name}</Text>
         ))}
       </DefinitionItem>
-      <DefinitionItem term="Publisher">
-        <Text key={game.primary_publisher.id}>
-          {game.primary_publisher.name}
-        </Text>
-      </DefinitionItem>
-      <DefinitionItem term="Designer">
-        <Text key={game.primary_designer.id}>{game.primary_designer.name}</Text>
-      </DefinitionItem>
       <DefinitionItem term="Website">
         <Link href={game.official_url} target="_blank">
-          Official URL
+          Offical URL
         </Link>
+      </DefinitionItem>
+      <DefinitionItem term="MSRP">
+        <Text key={game.msrp}>${game.msrp}</Text>
       </DefinitionItem>
     </SimpleGrid>
   );
