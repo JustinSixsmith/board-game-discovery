@@ -1,7 +1,3 @@
-export interface VideosResponse {
-  videos: Video[];
-}
-
 export interface Video {
   id: string;
   url: string;
@@ -13,4 +9,8 @@ export interface Video {
   game: {
     id: string;
   };
+}
+
+export interface VideosResponse {
+  videos: Video[];
 }

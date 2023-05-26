@@ -2,7 +2,8 @@ import { Box, Heading, Spinner } from "@chakra-ui/react";
 import parse from "html-react-parser";
 import { useParams } from "react-router-dom";
 import GameAttributes from "../components/GameAttributes";
-import GameVideo from "../components/GameVideo";
+import GameImages from "../components/GameImages";
+import GameVideos from "../components/GameVideos";
 import useGame from "../hooks/useGame";
 
 const GameDetailPage = () => {
@@ -18,7 +19,8 @@ const GameDetailPage = () => {
       <Heading>{game.name}</Heading>
       <Box>{parse(game.description)}</Box>
       <GameAttributes game={game} />
-      <GameVideo gameId={game.id} />
+      <GameVideos gameId={game.id} />
+      <GameImages gameId={game.id} />
     </>
   );
 };

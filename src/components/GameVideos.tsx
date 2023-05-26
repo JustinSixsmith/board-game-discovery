@@ -6,7 +6,7 @@ interface Props {
   gameId: string;
 }
 
-const GameVideo = ({ gameId }: Props) => {
+const GameVideos = ({ gameId }: Props) => {
   const { data, error, isLoading } = useVideos(gameId);
 
   if (isLoading) return null;
@@ -16,10 +16,7 @@ const GameVideo = ({ gameId }: Props) => {
   const videos = videosResponse?.videos;
 
   return (
-    <Grid
-      templateColumns={{ base: "1fr", md: "1fr 1fr", lg: "1fr 1fr 1fr 1fr" }}
-      gap={6}
-    >
+    <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={6}>
       {videos.map((video) => (
         <Box
           key={video.id}
@@ -78,4 +75,4 @@ function getVideoId(url: string): string {
   return "";
 }
 
-export default GameVideo;
+export default GameVideos;
