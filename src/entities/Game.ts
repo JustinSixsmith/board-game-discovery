@@ -1,10 +1,10 @@
-import { Category } from "./Category";
-import { Designer } from "./Designer";
+import Category from "./Category";
+import Designer from "./Designer";
 import { Image } from "./Image";
-import { Mechanic } from "./Mechanic";
-import { Publisher } from "./Publisher";
+import Mechanic from "./Mechanic";
+import Publisher from "./Publisher";
 
-export interface Game {
+export default interface Game {
   artists: string[];
   average_strategy_complexity: number;
   average_user_rating: number;

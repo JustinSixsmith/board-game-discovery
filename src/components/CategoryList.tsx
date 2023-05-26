@@ -1,5 +1,5 @@
 import { Button, Heading, List, ListItem, Spinner } from "@chakra-ui/react";
-import { Category } from "../entities/Category";
+import Category from "../entities/Category";
 import useCategories from "../hooks/useCategories";
 import useGameQueryStore from "../store";
 
