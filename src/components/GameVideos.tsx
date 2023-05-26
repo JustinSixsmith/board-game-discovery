@@ -16,7 +16,11 @@ const GameVideos = ({ gameId }: Props) => {
   const videos = videosResponse?.videos;
 
   return (
-    <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={6}>
+    <Grid
+      templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+      gap={6}
+      marginBottom={6}
+    >
       {videos.map((video) => (
         <Box
           key={video.id}
@@ -42,27 +46,6 @@ const GameVideos = ({ gameId }: Props) => {
     </Grid>
   );
 };
-
-// const GameVideo = ({ gameId }: Props) => {
-//   const { data, error, isLoading } = useVideos(gameId);
-
-//   if (isLoading) return null;
-//   if (error) throw error;
-
-//   // Uses type assertion to specify that data is a VideosResponse
-//   const videosResponse = data as unknown as VideosResponse;
-
-//   const firstVideo = videosResponse?.videos[0];
-//   const videoSrc = `https://www.youtube.com/embed/${getVideoId(
-//     firstVideo?.url || ""
-//   )}`;
-
-//   return firstVideo ? (
-//     <div className="video-container">
-//       <iframe src={videoSrc} title={firstVideo.title} allowFullScreen />
-//     </div>
-//   ) : null;
-// };
 
 // Function to extract video id from YouTube URL
 function getVideoId(url: string): string {
