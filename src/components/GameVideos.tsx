@@ -16,11 +16,7 @@ const GameVideos = ({ gameId }: Props) => {
   const videos = videosResponse?.videos;
 
   return (
-    <Grid
-      templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
-      gap={6}
-      marginBottom={6}
-    >
+    <Grid templateColumns={{ base: "1fr" }} gap={6} marginBottom={6}>
       {videos.map((video) => (
         <Box
           key={video.id}

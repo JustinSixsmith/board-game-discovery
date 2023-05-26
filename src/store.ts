@@ -1,7 +1,6 @@
 import { create } from "zustand";
 
 interface GameQuery {
-  //   id: string;
   categoryId?: string;
   mechanicId?: string;
   sortOrder?: string;

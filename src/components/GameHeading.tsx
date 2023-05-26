@@ -10,9 +10,14 @@ const GameHeading = () => {
   const mechanicId = useGameQueryStore((s) => s.gameQuery.mechanicId);
   const mechanic = useMechanic(mechanicId);
 
-  const heading = `${category?.name || "All"} Board Games ${
-    mechanicId ? `w/${mechanic?.name} Mechanics` : ""
-  }`;
+  function getHeading(name: string) {
+    if (name === "Accessory") return "Accessories";
+    return `${category?.name || "All"} Board Games ${
+      mechanicId ? `with ${mechanic?.name} Mechanics` : ""
+    }`;
+  }
+
+  const heading = getHeading(category?.name || "");
 
   return (
     <Heading as="h1" marginY={5} fontSize="5xl">

@@ -16,7 +16,7 @@ const GameImages = ({ gameId }: Props) => {
   const images = imagesResponse?.images;
 
   return (
-    <SimpleGrid columns={{ base: 2, lg: 3 }} spacing={2}>
+    <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={2}>
       {images.map((image) => (
         <Box
           key={image.id}
