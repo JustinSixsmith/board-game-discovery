@@ -49,10 +49,13 @@ const GameAttributes = ({ game }: Props) => {
         ))}
       </DefinitionItem>
       <DefinitionItem term="Mechanics">
-        {gameMechanics.map((mechanic) => (
-          <Text key={mechanic?.id}>{mechanic?.name}</Text>
-        ))}
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={1}>
+          {gameMechanics.map((mechanic) => (
+            <Text key={mechanic?.id}>{mechanic?.name}</Text>
+          ))}
+        </SimpleGrid>
       </DefinitionItem>
+
       <DefinitionItem term="Website">
         <Link href={game.official_url} target="_blank">
           Offical URL
