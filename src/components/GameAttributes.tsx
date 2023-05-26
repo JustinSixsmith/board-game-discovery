@@ -35,13 +35,15 @@ const GameAttributes = ({ game }: Props) => {
       <DefinitionItem term="Rating">
         <UserRating score={parseFloat(game.average_user_rating.toFixed(2))} />
       </DefinitionItem>
-      <DefinitionItem term="Designer">
+      <DefinitionItem term="Primary Designer">
         <Text key={game.primary_designer.id}>{game.primary_designer.name}</Text>
       </DefinitionItem>
       <DefinitionItem term="Artist(s)">
-        {game.artists.map((artist) => (
-          <Text key={artist}>{artist}</Text>
-        ))}
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={1}>
+          {game.artists.map((artist) => (
+            <Text key={artist}>{artist}</Text>
+          ))}
+        </SimpleGrid>
       </DefinitionItem>
       <DefinitionItem term="Categories">
         {gameCategories.map((category) => (
