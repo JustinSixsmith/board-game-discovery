@@ -26,7 +26,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/JustinSixsmith/board-game-discovery">
+  <a href="https://board-game-discovery.vercel.app/">
     <img src="public/board-game-discovery.jpeg" alt="Logo" width="full" height="80">
   </a>
 
@@ -76,7 +76,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://board-game-discovery.vercel.app/)
 
 Board Game Discovery is a dynamic, user-friendly platform for board game enthusiasts. It showcases an extensive database of games, complete with detailed descriptions, ratings, and user reviews. The platform features a personalized recommendation system, designed to help users discover new games based on their preferences. Whether you are a seasoned player, a newcomer to the board game scene, or a potential employer exploring innovative frontend designs, Board Game Discovery offers a seamless, engaging, and insightful journey into the world of board games.
 
@@ -89,6 +89,7 @@ Board Game Discovery is a dynamic, user-friendly platform for board game enthusi
 - [![Chakra][Chakra.com]][Chakra-url]
 - [![React-query][React-query.com]][React-query-url]
 - [![Vite][Vite.com]][Vite-url]
+- [![Vercel][Vercel.com]][Vercel-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -176,3 +177,5 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [React-query-url]: https://tanstack.com/query/v3/
 [Vite.com]: https://camo.githubusercontent.com/d96a01edb67770ddc4a8794895b4e2c1fab10e9fab40060b287bcb3448915a01/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f7374796c653d666f722d7468652d6261646765266d6573736167653d5669746526636f6c6f723d363436434646266c6f676f3d56697465266c6f676f436f6c6f723d464646464646266c6162656c3d
 [Vite-url]: https://vitejs.dev/
+[Vercel.com]: https://camo.githubusercontent.com/ac911ed7941e047950a141607fed83bc6cd654187b72dd758f7810476ebffaef/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f7374796c653d666f722d7468652d6261646765266d6573736167653d56657263656c26636f6c6f723d303030303030266c6f676f3d56657263656c266c6f676f436f6c6f723d464646464646266c6162656c3d
+[Vercel-url]: https://vercel.com/
