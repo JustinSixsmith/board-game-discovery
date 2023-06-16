@@ -59,12 +59,14 @@ const GameAttributes = ({ game }: Props) => {
       </DefinitionItem>
 
       <DefinitionItem term="Website">
-        <Link href={game.official_url} target="_blank">
+        <Link href={game.official_url} target="_blank" color="#d7c7ae">
           Offical URL
         </Link>
       </DefinitionItem>
       <DefinitionItem term="MSRP">
-        <Text key={game.msrp}>${game.msrp}</Text>
+        <Text key={game.msrp} color="#87b9a4">
+          ${game.msrp}
+        </Text>
       </DefinitionItem>
     </SimpleGrid>
   );

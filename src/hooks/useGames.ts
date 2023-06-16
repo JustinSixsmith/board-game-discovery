@@ -13,7 +13,7 @@ const useGames = () => {
   return useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: async ({ pageParam = 0 }) => {
-      const games = await apiClient.getAll({
+      const allGames = await apiClient.getAll({
         params: {
           categories: gameQuery.categoryId,
           mechanics: gameQuery.mechanicId,
@@ -22,8 +22,13 @@ const useGames = () => {
           skip: pageParam,
         },
       });
+
+      // Filter games that have a non-empty string
+      const games = allGames.filter((game) => game.name !== "");
+
       return { count: games.length, games };
     },
+
     getNextPageParam: (lastPage) => {
       const { games } = lastPage;
       return games.length > 0 ? games.length : undefined;
